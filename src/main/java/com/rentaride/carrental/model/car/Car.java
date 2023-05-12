@@ -1,0 +1,64 @@
+package com.rentaride.carrental.model.car;
+
+import com.rentaride.carrental.model.Maintenance;
+import com.rentaride.carrental.model.Rental;
+
+import jakarta.persistence.FetchType;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table
+public class Car {
+    @Setter(AccessLevel.NONE)
+    @Id
+    @SequenceGenerator(name = "car_sequence", sequenceName = "car_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "car_sequence")
+    @Column(unique = true, nullable = false)
+    private Long id;
+
+    @Column(nullable = false)
+    private String make;
+
+    @Column(nullable = false)
+    private String model;
+
+    @Column(nullable = false)
+    private int year;
+
+    @Column(nullable = false)
+    private String color;
+
+    @Column(nullable = false)
+    private String licencePlate;
+
+    @Column(nullable = false)
+    private int rentalPricePerDay;
+
+    @Column(nullable = false)
+    private CarStatus status;
+
+    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Rental> rentals;
+
+    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Maintenance> maintenances;
+}
+
