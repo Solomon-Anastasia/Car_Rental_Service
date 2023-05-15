@@ -1,7 +1,7 @@
 package com.rentaride.carrental.model.car;
 
-import com.rentaride.carrental.model.Maintenance;
-import com.rentaride.carrental.model.Rental;
+import com.rentaride.carrental.model.maintenance.Maintenance;
+import com.rentaride.carrental.model.rental.Rental;
 
 import jakarta.persistence.FetchType;
 import jakarta.persistence.CascadeType;
@@ -31,7 +31,6 @@ public class Car {
     @Id
     @SequenceGenerator(name = "car_sequence", sequenceName = "car_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "car_sequence")
-    @Column(unique = true, nullable = false)
     private Long id;
 
     @Column(nullable = false)
@@ -60,5 +59,15 @@ public class Car {
 
     @OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Maintenance> maintenances;
+
+    public Car(String make, String model, int year, String color, String licencePlate, int rentalPricePerDay, CarStatus status) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.licencePlate = licencePlate;
+        this.rentalPricePerDay = rentalPricePerDay;
+        this.status = status;
+    }
 }
 

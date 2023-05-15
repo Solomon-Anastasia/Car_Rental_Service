@@ -1,7 +1,8 @@
-package com.rentaride.carrental.model;
+package com.rentaride.carrental.model.rental;
 
 import com.rentaride.carrental.model.car.Car;
 
+import com.rentaride.carrental.model.customer.Customer;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.CascadeType;
@@ -32,7 +33,6 @@ public class Rental {
     @Id
     @SequenceGenerator(name = "rental_sequence", sequenceName = "rental_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rental_sequence")
-    @Column(unique = true, nullable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

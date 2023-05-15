@@ -1,6 +1,6 @@
 package com.rentaride.carrental.model.employee;
 
-import com.rentaride.carrental.model.Maintenance;
+import com.rentaride.carrental.model.maintenance.Maintenance;
 import jakarta.persistence.*;
 
 import lombok.AccessLevel;
@@ -20,7 +20,6 @@ public class Employee {
     @Id
     @SequenceGenerator(name = "employee_sequence", sequenceName = "employee_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_sequence")
-    @Column(unique = true, nullable = false)
     private Long id;
 
     @Column(nullable = false)

@@ -1,4 +1,4 @@
-package com.rentaride.carrental.model;
+package com.rentaride.carrental.model.maintenance;
 
 import com.rentaride.carrental.model.car.Car;
 import com.rentaride.carrental.model.employee.Employee;
@@ -32,7 +32,6 @@ public class Maintenance {
     @Id
     @SequenceGenerator(name = "maintenance_sequence", sequenceName = "maintenance_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "maintenance_sequence")
-    @Column(unique = true, nullable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -40,7 +39,7 @@ public class Maintenance {
     private Employee employee;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn( nullable = false)
+    @JoinColumn(nullable = false)
     private Car car;
 
     @Column(nullable = false)
