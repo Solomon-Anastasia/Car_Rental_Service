@@ -52,12 +52,21 @@ public class Rental {
     @Column(nullable = false)
     private double totalCost;
 
+    @Column(nullable = false)
+    private RentalStatus rentalStatus;
+
     public Rental(Car car, Customer customer, LocalDate rentalStartDate, LocalDate rentalEndDate) {
         this.car = car;
         this.customer = customer;
         this.rentalStartDate = rentalStartDate;
         this.rentalEndDate = rentalEndDate;
+        this.rentalStatus = calculateRentalStatus();
         this.totalCost = calculateTotalCost();
+    }
+
+    private RentalStatus calculateRentalStatus() {
+        return (getRentalEndDate().isAfter(LocalDate.now())) ?
+                RentalStatus.RETURNED : RentalStatus.ACTIVE;
     }
 
     public double calculateTotalCost() {
