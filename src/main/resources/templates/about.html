@@ -31,7 +31,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownLogIn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Create Account</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <!----><li><a class="dropdown-item" href="createAccount.html">Create Account</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/register}">Create Account</a></li>
                                     <!----><li><a class="dropdown-item" href="logIn.html">Log In</a></li>
                                 </ul>
                             </li>
@@ -43,12 +43,10 @@
             <header class="bg-dark py-5">
                 <div class="container px-5">
                     <div class="row justify-content-center">
-                        <div class="col-lg-8 col-xxl-6">
                             <div class="text-center text-white my-5">
                                 <h1 class="display-5 fw-bolder text-white mb-2">Exceeding expectations, one ride at a time.</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">At our core, our mission is to redefine the way you experience car rentals. We strive to provide exceptional service, a diverse fleet of quality vehicles, and seamless convenience, all with the goal of making your journey with us truly unforgettable. Your satisfaction is our driving force, and we are committed to exceeding your expectations at every turn.</p>
+                                <p class="lead fw-normal text-white-50 mb-4">Our mission is to redefine the way you experience car rentals. We strive to provide exceptional service, a diverse fleet of quality vehicles, and seamless convenience, all with the goal of making your journey with us truly unforgettable. Your satisfaction is our driving force, and we are committed to exceeding your expectations at every turn.</p>
                                 <a class="btn btn-primary btn-lg" href="#scroll-target">Read our story</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -57,7 +55,7 @@
             <section class="py-5 bg-light" id="scroll-target">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
-                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" th:src="@{/assets/aboutpage/ourFoundingImage.png}" alt="..." /></div>
+                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" th:src="@{/assets/aboutpage/ourFounding.png}" alt="..." /></div>
                         <div class="col-lg-6">
                             <h2 class="fw-bolder">Our founding</h2>
                             <p class="lead fw-normal text-muted mb-0">Our company was founded with a vision to revolutionize the car rental industry, driven by a passion for delivering exceptional service and a commitment to providing customers with unparalleled experiences on the road.</p>
@@ -68,7 +66,7 @@
             <section class="py-5">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
-                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" th:src="@{/assets/aboutpage/ourGrowth.png}" alt="..." /></div>
                         <div class="col-lg-6">
                             <h2 class="fw-bolder">Growth &amp; beyond</h2>
                             <p class="lead fw-normal text-muted mb-0">Our commitment to growth goes beyond expanding our fleet and reach. We are dedicated to continually enhancing our services, innovating with new technologies, and fostering long-lasting relationships with our customers, ensuring that we evolve alongside their ever-changing needs and exceed their expectations as we embark on an exciting journey of progress together.</p>
@@ -79,7 +77,7 @@
             <section class="py-5 bg-light">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
-                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" th:src="@{/assets/aboutpage/ourPurpose.jpg}" alt="..." /></div>
                         <div class="col-lg-6">
                             <h2 class="fw-bolder">Our purpose</h2>
                             <p class="lead fw-normal text-muted mb-0">Our purpose is to empower individuals to embrace the freedom of the open road, creating memorable experiences and enabling unforgettable adventures that inspire a lifetime of exploration.</p>
