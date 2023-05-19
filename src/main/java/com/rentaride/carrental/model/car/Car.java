@@ -45,7 +45,7 @@ public class Car {
     @Column(nullable = false)
     private String color;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String licencePlate;
 
     @Column(nullable = false)

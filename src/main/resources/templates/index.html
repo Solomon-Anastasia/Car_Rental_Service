@@ -12,6 +12,8 @@
         <link rel="icon" type="image/svg+xml" th:href="@{/assets/rentARide.png.svg}" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
 
     <body class="d-flex flex-column h-100">
@@ -19,13 +21,13 @@
 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.html">Rent A Ride</a>
+                    <a class="navbar-brand" th:href="@{/home}">Rent A Ride</a>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <!----><li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                            <!----><li class="nav-item"><a class="nav-link" href="rent.html">Rent Car</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/home}">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/about}">About</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/rent}">Rent Car</a></li>
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownLogIn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Create Account</a>
@@ -44,11 +46,11 @@
                     <div class="row gx-5 align-items-center justify-content-center">
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 text-center text-xl-start">
-                                <h1 class="display-5 fw-bolder text-white mb-2">Unleash Your Journey with Rent A Ride!</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">Rent A Ride - Your Trusted Car Rental Solution</p>
+                                <h1 class="display-5 fw-bolder text-white mb-2">Unleash your journey with Rent A Ride!</h1>
+                                <p class="lead fw-normal text-white-50 mb-4">Rent A Ride - Your trusted car rental solution</p>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                     <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                                    <!----><a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                                    <a class="btn btn-outline-light btn-lg px-4" th:href="@{/about}">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -146,19 +148,8 @@
             </section>
         </main>
 
-        <footer class="bg-dark py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Rent a Ride 2023</div></div>
-                    <div class="col-auto">
-                        <!----><a class="link-light small" href="#!">Privacy</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <!----><a class="link-light small" href="#!">Terms</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <!----><a class="link-light small" href="#!">Contact</a>
-                    </div>
-                </div>
-            </div>
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-left text-white">Copyright &copy; Rent a Ride 2023</p></div>
         </footer>
     </body>
 </html>

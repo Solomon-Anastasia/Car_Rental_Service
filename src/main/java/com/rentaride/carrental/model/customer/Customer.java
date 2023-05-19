@@ -37,9 +37,10 @@ public class Customer {
     @Column(nullable = false)
     private String lastName;
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     private String address;
 
+    @Column(unique = true)
     private String email;
 
     private String phoneNumber;
