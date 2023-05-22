@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Register</title>
+        <title>Login</title>
 
         <link rel="icon" type="image/x-icon" th:href="@{/images/rentARide.png.ico}" />
         <link rel="icon" type="image/png" th:href="@{/images/rentARide.png}" />
@@ -45,57 +45,30 @@
             <div class="container px-5">
                 <div class="row justify-content-center">
                     <div class="text-center text-white my-5">
-                        <h1 class="display-5 fw-bolder text-white mb-2">Create an Account!</h1>
-                        <p class="lead fw-normal text-white-50 mb-4">Create an account with us today and unlock a world of convenience, personalized offers, and seamless booking experiences, making your car rental journey effortless from start to finish.</p>
+                        <h1 class="display-5 fw-bolder text-white mb-2">Welcome back!</h1>
                     </div>
                 </div>
             </div>
         </header>
 
-        <div class="container" style="width: 80%;">
+        <div class="container" style="width: 80%; margin-top: 4rem; margin-bottom: 4rem;">
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
-                    <div class="row justify-content-center align-items-center" style="margin-top: 2rem;">
+                    <div class="row justify-content-center align-items-center" style="margin-top: 4rem; margin-bottom: 4rem;">
                         <div class="col-lg-7">
                             <div class="p-5">
                                 <form class="user fs-4 mb-4">
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 mb-4 mb-sm-0">
-                                            <input style="font-size: 1.1rem;" type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input style="font-size: 1.1rem;" type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
-                                        </div>
-                                    </div>
                                     <div class="form-group mb-4">
-                                        <input style="font-size: 1.1rem;" type="email" class="form-control form-control-user" id="exampleInputAddress" placeholder="Address">
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <input style="font-size: 1.1rem;" type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <input style="font-size: 1.1rem;" type="text" class="form-control form-control-user" id="exampleInputPhoneNumber" placeholder="Phone Number">
+                                        <input style="font-size: 1.1rem;" type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Enter Email Address">
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-sm-6 mb-4 mb-sm-0">
+                                        <div class="form-group mb-4">
                                             <input style="font-size: 1.1rem;" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                         </div>
-                                        <div class="col-sm-6">
-                                            <input style="font-size: 1.1rem;" type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
-                                        </div>
                                     </div>
-                                    <a style="font-size: 1.1rem;" th:href="@{/login}" class="btn btn-primary btn-user btn-block mt-4">Register Account</a>
+                                    <!----><a style="font-size: 1.1rem;" th:href="@{/home}" class="btn btn-primary btn-user btn-block mb-4">Login</a>
                                 </form>
                                 <hr>
-
-                                <div class="text-center">
-                                    <a class="small btn btn-lg px-4 me-sm-3" style="background-color: #f2f2f2; border-radius: 10rem; font-size: 1.1rem;"
-                                       th:href="@{/login}"
-                                       onmouseover="this.classList.remove('btn-secondary'); this.classList.add(this.style.backgroundColor='#0d6efc'); this.classList.add('text-white');"
-                                       onmouseout="this.classList.remove('btn-primary'); this.classList.remove('text-white'); this.style.backgroundColor='#f2f2f2';">
-                                        Already have an account? Login!
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
