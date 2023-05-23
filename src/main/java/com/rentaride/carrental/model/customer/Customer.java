@@ -40,7 +40,7 @@ public class Customer {
     @Column(nullable = false)
     private String address;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
     private String phoneNumber;

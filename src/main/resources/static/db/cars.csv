@@ -1,0 +1,9 @@
+make,model,year,color,licencePlate,rentalPricePerDay,status
+Mercedes-Benz,E-Class,2021,Black,ABC123,150,AVAILABLE
+Honda,CR-V,2022,Silver,DEF456,100,AVAILABLE
+Toyota,Corolla,2020,White,GHI789,80,AVAILABLE
+Ford,Mustang,2021,Red,JKL012,200,AVAILABLE
+Ford,F-150,2019,Blue,MNO345,120,AVAILABLE
+Jeep,Wrangler,2021,Green,PQR678,180,AVAILABLE
+Audi,A4,2021,Gray,STU901,160,AVAILABLE
+BMW,X5,2020,Black,VWX234,180,AVAILABLE

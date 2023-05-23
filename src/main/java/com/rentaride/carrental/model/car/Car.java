@@ -3,16 +3,7 @@ package com.rentaride.carrental.model.car;
 import com.rentaride.carrental.model.maintenance.Maintenance;
 import com.rentaride.carrental.model.rental.Rental;
 
-import jakarta.persistence.FetchType;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -51,6 +42,7 @@ public class Car {
     @Column(nullable = false)
     private int rentalPricePerDay;
 
+    /*@Enumerated(EnumType.STRING)*/
     @Column(nullable = false)
     private CarStatus status;
 

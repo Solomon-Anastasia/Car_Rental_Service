@@ -49,7 +49,7 @@
         </header>
 
         <!--Car list-->
-        <section class="py-5">
+        <!--<section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5">
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <!----><div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
+                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <!----><div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
+                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <!----><div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
+                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <!----><div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
+                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
                             </div>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <!----><div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
+                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <!----><div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
+                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <!----><div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
+                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
                             </div>
                         </div>
                     </div>
@@ -168,6 +168,26 @@
                                 <div class="text-center">
                                     <h5 class="fw-bolder">Car name</h5>
                                     From $40.00 per day
+                                </div>
+                            </div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <div class="col mb-5" th:each="car : ${cars}">
+                        <div class="card h-100">
+                            <img class="card-img-top" th:src="@{/images/carfleet/__${car.make + car.model}__.png}" alt="..." />
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder" th:text="${car.make + ' ' + car.model}"></h5>
+                                    <span th:text="${car.rentalPricePerDay} + '€ per day'"></span>
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">

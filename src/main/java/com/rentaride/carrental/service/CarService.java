@@ -17,12 +17,11 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
+    /*public Optional<Car> getCarById(Long id) {
+        return carRepository.findById(id);
+    }*/
+
     public List<Car> getAllCars() {
         return (List<Car>) carRepository.findAll();
-    }
-
-    public Optional<Car> getCarById(Long id) {
-
-        return carRepository.findById(id);
     }
 }
