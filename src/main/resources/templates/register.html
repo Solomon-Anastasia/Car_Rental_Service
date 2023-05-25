@@ -31,7 +31,7 @@
                         <li class="nav-item"><a class="nav-link" th:href="@{/rent}">Rent Car</a></li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownLogIn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Create Account</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownLogIn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Log In</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                                 <li><a class="dropdown-item" th:href="@{/register}">Create Account</a></li>
                                 <li><a class="dropdown-item" th:href="@{/login}">Log In</a></li>
@@ -59,30 +59,27 @@
                     <div class="row justify-content-center align-items-center" style="margin-top: 2rem;">
                         <div class="col-lg-7">
                             <div class="p-5">
-                                <form class="user fs-4 mb-4" th:action="@{/login}" method="post" onsubmit="return validateForm()">
+                                <form class="customer fs-4 mb-4" th:action="@{/login}" method="post" onsubmit="return validateForm()">
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-4 mb-sm-0">
-                                            <input style="font-size: 1.1rem;" type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name" required>
+                                            <input style="font-size: 1.1rem;" type="text" class="form-control form-control-customer" id="exampleFirstName" placeholder="First Name" required>
                                         </div>
                                         <div class="col-sm-6">
-                                            <input style="font-size: 1.1rem;" type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" required>
+                                            <input style="font-size: 1.1rem;" type="text" class="form-control form-control-customer" id="exampleLastName" placeholder="Last Name" required>
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <input style="font-size: 1.1rem;" type="text" class="form-control form-control-user" id="exampleInputAddress" placeholder="Address" required>
+                                        <input style="font-size: 1.1rem;" type="text" class="form-control form-control-customer" id="exampleInputAddress" placeholder="Address" required>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <input style="font-size: 1.1rem;" type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" required>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <input style="font-size: 1.1rem;" type="text" class="form-control form-control-user" id="exampleInputPhoneNumber" placeholder="Phone Number">
+                                        <input style="font-size: 1.1rem;" type="email" class="form-control form-control-customer" id="exampleInputEmail" placeholder="Email Address" required>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-4 mb-sm-0">
-                                            <input style="font-size: 1.1rem;" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required>
+                                            <input style="font-size: 1.1rem;" type="password" class="form-control form-control-customer" id="exampleInputPassword" placeholder="Password" required>
                                         </div>
                                         <div class="col-sm-6">
-                                            <input style="font-size: 1.1rem;" type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password" required>
+                                            <input style="font-size: 1.1rem;" type="password" class="form-control form-control-customer" id="exampleRepeatPassword" placeholder="Repeat Password" required>
                                         </div>
                                     </div>
 
@@ -100,7 +97,7 @@
                                     </div>
                                     <!---->
 
-                                    <input style="font-size: 1.1rem;" class="btn btn-primary btn-user btn-block mt-4" value="Register Account" type="submit">
+                                    <!----><input style="font-size: 1.1rem;" class="btn btn-primary btn-customer btn-block mt-4" value="Register Account" type="submit">
                                 </form>
                                 <hr>
 

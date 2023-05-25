@@ -16,11 +16,6 @@ public class CarController {
         this.carService = carService;
     }
 
-   /* @GetMapping({"/{car_id}"})
-    public Optional<Car> getCarById(@PathVariable("car_id") Long id) {
-        return carService.getCarById(id);
-    }
-    }*/
    @GetMapping("/rent")
    public String showRentCarPage(Model model) {
        List<Car> cars = carService.getAllCars();

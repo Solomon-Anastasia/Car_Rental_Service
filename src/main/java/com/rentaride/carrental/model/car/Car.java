@@ -42,15 +42,14 @@ public class Car {
     @Column(nullable = false)
     private int rentalPricePerDay;
 
-    /*@Enumerated(EnumType.STRING)*/
     @Column(nullable = false)
     private CarStatus status;
 
     @OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Rental> rentals;
 
-    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Maintenance> maintenances;
+    /*@OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Maintenance> maintenances;*/
 
     public Car(String make, String model, int year, String color, String licencePlate, int rentalPricePerDay, CarStatus status) {
         this.make = make;

@@ -15,8 +15,8 @@ public class WebController {
         return "about";
     }
 
-    @GetMapping("/register")
+    /*@GetMapping("/register")
     public String showRegisterPage() {
         return "register";
-    }
+    }*/
 }

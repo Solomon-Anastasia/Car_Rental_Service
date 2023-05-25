@@ -43,8 +43,6 @@ public class Customer {
     @Column(unique = true, nullable = false)
     private String email;
 
-    private String phoneNumber;
-
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Rental> rentals;
 }
