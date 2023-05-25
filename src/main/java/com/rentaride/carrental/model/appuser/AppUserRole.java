@@ -1,4 +1,4 @@
-package com.rentaride.carrental.appuser;
+package com.rentaride.carrental.model.appuser;
 
 public enum AppUserRole {
     USER,

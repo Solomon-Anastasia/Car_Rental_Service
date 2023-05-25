@@ -1,5 +1,7 @@
-package com.rentaride.carrental.appuser;
+package com.rentaride.carrental.service;
 
+import com.rentaride.carrental.model.appuser.AppUser;
+import com.rentaride.carrental.repository.AppUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

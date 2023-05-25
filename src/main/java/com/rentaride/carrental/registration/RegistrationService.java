@@ -1,8 +1,8 @@
-package com.rentaride.carrental.appuser.registration;
+package com.rentaride.carrental.registration;
 
-import com.rentaride.carrental.appuser.AppUser;
-import com.rentaride.carrental.appuser.AppUserRole;
-import com.rentaride.carrental.appuser.AppUserService;
+import com.rentaride.carrental.model.appuser.AppUser;
+import com.rentaride.carrental.model.appuser.AppUserRole;
+import com.rentaride.carrental.service.AppUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

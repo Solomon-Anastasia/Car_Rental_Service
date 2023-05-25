@@ -1,4 +1,4 @@
-package com.rentaride.carrental.appuser.registration;
+package com.rentaride.carrental.registration;
 
 public record RegistrationRequest(String firstName, String lastName, String address, String email, String password) {
 }

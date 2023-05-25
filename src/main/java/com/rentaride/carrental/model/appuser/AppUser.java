@@ -1,4 +1,4 @@
-package com.rentaride.carrental.appuser;
+package com.rentaride.carrental.model.appuser;
 
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
@@ -19,14 +19,14 @@ import java.util.Collections;
 @Entity
 public class AppUser implements UserDetails {
     @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
+            name = "app_user_sequence",
+            sequenceName = "app_user_sequence",
             allocationSize = 1
     )
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "user_sequence"
+            generator = "app_user_sequence"
     )
     private Long id;
 
@@ -39,7 +39,7 @@ public class AppUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked = false;
-    private Boolean enabled = false;
+    private Boolean enabled = true;
 
     public AppUser(String firstName, String lastName, String address, String email, String password, AppUserRole appUserRole) {
         this.firstName = firstName;

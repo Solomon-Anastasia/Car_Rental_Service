@@ -1,4 +1,4 @@
-package com.rentaride.carrental.appuser.security;
+package com.rentaride.carrental.registration.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
