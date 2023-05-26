@@ -4,12 +4,16 @@ import com.rentaride.carrental.service.AppUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import java.util.Collections;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -33,32 +37,11 @@ public class WebSecurityConfig {
                 .httpBasic(withDefaults())
                 .build();
     }
-    /*@Bean
-    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
-        return http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> {
-                            try {
-                                auth
-                                        .requestMatchers("/**").permitAll().and().formLogin(
-                                                form -> form
-                                                        .defaultSuccessUrl("/home")
-                                                        .loginPage("/login")
-                                                        .failureUrl("/login")
-                                        )
-                                        .logout()
-                                        .logoutUrl("/logout")
-                                        .logoutSuccessUrl("/login")
-                                        .and().reqes
-                                        .anyRequest().authenticated();
-                            } catch (Exception e) {
-                                throw new RuntimeException(e);
-                            }
-                        }
-                )
-                .httpBasic(withDefaults())
-                .build();
-    }*/
+
+    @Bean
+    public AuthenticationManager authenticationManager() {
+        return new ProviderManager(Collections.singletonList(daoAuthenticationProvider()));
+    }
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
