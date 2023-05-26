@@ -55,6 +55,7 @@ public class Rental {
     @Column(nullable = false)
     private RentalStatus rentalStatus;
 
+    //     TODO: TO DELETE
     public Rental(Car car, Customer customer, LocalDate rentalStartDate, LocalDate rentalEndDate) {
         this.car = car;
         this.customer = customer;

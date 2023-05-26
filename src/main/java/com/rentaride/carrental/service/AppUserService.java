@@ -31,16 +31,13 @@ public class AppUserService implements UserDetailsService {
                 .isPresent();
 
         if (userExists) {
-            throw new IllegalStateException("email already taken");
+            return "emailTaken";
         }
 
         String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
         appUser.setPassword(encodedPassword);
-
         appUserRepository.save(appUser);
 
-        // TODO: Send confirmation token
-
-        return "register";
+        return "login";
     }
 }

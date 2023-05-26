@@ -1,10 +1,10 @@
-package com.rentaride.carrental.web.controller;
+package com.rentaride.carrental.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class WebController {
+public class MainWebController {
     @GetMapping("/home")
     public String showHomePage() {
         return "index";
@@ -14,9 +14,4 @@ public class WebController {
     public String showAboutPage() {
         return "about";
     }
-
-    /*@GetMapping("/register")
-    public String showRegisterPage() {
-        return "register";
-    }*/
 }
