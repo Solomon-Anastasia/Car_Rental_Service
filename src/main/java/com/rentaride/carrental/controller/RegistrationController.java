@@ -1,7 +1,7 @@
 package com.rentaride.carrental.controller;
 
 import com.rentaride.carrental.cookie.CookieService;
-import com.rentaride.carrental.registration.RegistrationRequest;
+import com.rentaride.carrental.model.dto.RegistrationRequestDto;
 import com.rentaride.carrental.service.RegistrationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,13 +17,13 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String showRegisterPage(Model model) {
-       model.addAttribute("request", new RegistrationRequest());
+       model.addAttribute("request", new RegistrationRequestDto());
 
        return "register";
     }
 
     @PostMapping("/registerSuccess")
-    public String registerSuccessfully(RegistrationRequest request, HttpServletResponse response) {
+    public String registerSuccessfully(RegistrationRequestDto request, HttpServletResponse response) {
         if (registrationService.register(request).equals("emailTaken")) {
             CookieService.setToastCookie(response, "showToast", true);
             return "redirect:/failedRegistration";
@@ -41,14 +41,4 @@ public class RegistrationController {
                 "redirect:/register?emailTaken=true"
         );
     }
-
-    //     TODO: TO DELETE
-    /*@RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/login";
-    }*/
 }

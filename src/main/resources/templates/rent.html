@@ -14,7 +14,14 @@
         <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script th:src="@{/js/script.js}"></script>
     </head>
+
+    <style>
+        .modal-sm {
+            max-width: 400px;
+        }
+    </style>
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -48,136 +55,6 @@
             </div>
         </header>
 
-        <!--Car list-->
-        <!--<section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Car name</h5>
-                                    From $40.00 per day
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Top rented</div>
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Car name</h5>
-                                    <span class="text-muted text-decoration-line-through">$20.00</span><br> From $18.00 per day
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Top rented</div>
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Car name</h5>
-                                    <span class="text-muted text-decoration-line-through">$50.00</span><br> From $25.00 per day
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Car name</h5>
-                                    From $40.00 per day
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Top rented</div>
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Car name</h5>
-                                    <span class="text-muted text-decoration-line-through">$50.00</span><br> From $25.00 per day
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Car name</h5>
-                                    From $120.00 per day
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Top rented</div>
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Car name</h5>
-                                    <span class="text-muted text-decoration-line-through">$20.00</span><br> From $18.00 per day
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Car name</h5>
-                                    From $40.00 per day
-                                </div>
-                            </div>
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                &lt;!&ndash;&ndash;&gt;<div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -190,8 +67,13 @@
                                     <span th:text="${car.rentalPricePerDay} + '€ per day'"></span>
                                 </div>
                             </div>
+
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <!----><div class="text-center"><a class="btn btn-primary mt-auto" href="#">Reserve now ></a></div>
+                                <div class="text-center">
+                                    <a class="btn btn-primary mt-auto" th:if="${currentUser == null}" th:href="@{/login}">Reserve now ></a>
+                                    <a class="btn btn-primary mt-auto" th:if="${currentUser != null}" onclick="showReserveModal(this)"
+                                       th:data-car-name="${car.make + ' ' + car.model}" th:data-car-price="${car.rentalPricePerDay}">Reserve now ></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -202,5 +84,127 @@
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-left text-white">Copyright &copy; Rent a Ride 2023</p></div>
         </footer>
+
+        <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reserveModalLabel">Reserve Car</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="customer fs-4 mb-4"
+                              th:action="@{/reservation}"
+                              th:object="${currentUser}"
+                              method="post"
+                              onsubmit="return validateDates()">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-4 mb-sm-0">
+                                    <label for="exampleFirstName" style="font-size: 1rem;">Name:</label>
+                                    <input th:field="*{firstName}" style="font-size: 1rem;" type="text"
+                                           class="form-control form-control-customer" id="exampleFirstName"
+                                           placeholder="First Name" readonly="readonly" th:if="${currentUser != null}" th:value="${currentUser.firstName}" required>
+                                    <input th:field="${guestUser.firstName}" style="font-size: 1rem;" type="text"
+                                           class="form-control form-control-customer" id="defaultFirstName"
+                                           placeholder="First Name" readonly="readonly" th:if="${currentUser == null}" th:value="${guestUser.firstName}" required>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="exampleLastName" style="font-size: 1rem;">Last Name:</label>
+                                    <input th:field="*{lastName}" style="font-size: 1rem;" type="text"
+                                           class="form-control form-control-customer" id="exampleLastName"
+                                           placeholder="Last Name" readonly="readonly" th:if="${currentUser != null}" th:value="${currentUser.lastName}" required>
+                                    <input th:field="${guestUser.lastName}" style="font-size: 1rem;" type="text"
+                                           class="form-control form-control-customer" id="defaultLastName"
+                                           placeholder="Last Name" readonly="readonly" th:if="${currentUser == null}" th:value="${guestUser.lastName}" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 0.5rem;">
+                                <label for="exampleInputAddress" style="font-size: 1rem;">Address:</label>
+                                <input th:field="*{address}" style="font-size: 1rem;" type="text"
+                                       class="form-control form-control-customer" id="exampleInputAddress"
+                                       placeholder="Address" readonly="readonly" th:if="${currentUser != null}" th:value="${currentUser.address}" required>
+
+                                <input th:field="${guestUser.address}" style="font-size: 1rem;" type="text"
+                                       class="form-control form-control-customer" id="defaultInputAddress"
+                                       placeholder="Address" readonly="readonly" th:if="${currentUser == null}" th:value="${guestUser.address}" required>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 0.5rem;">
+                                <label for="exampleInputEmail" style="font-size: 1rem;">Email:</label>
+                                <input th:field="*{email}" style="font-size: 1rem;" type="email"
+                                       class="form-control form-control-customer" id="exampleInputEmail"
+                                       placeholder="Email Address" readonly="readonly" th:if="${currentUser != null}" th:value="${currentUser.email}" required>
+                                <input th:field="${guestUser.email}" style="font-size: 1rem;" type="email"
+                                       class="form-control form-control-customer" id="defaultInputEmail"
+                                       placeholder="Email Address" readonly="readonly" th:if="${currentUser == null}" th:value="${guestUser.email}" required>
+                            </div>
+
+                            <div class="form-group row">
+                                <div style="margin-top: 0.5rem;" class="form-group">
+                                    <label for="carModel" style="font-size: 1rem;">Car Model:</label>
+                                    <input type="text" id="carModel" name="carModel" class="form-control" readonly="readonly" required>
+                                </div>
+
+                                <div style="margin-top: 0.5rem;" class="form-group">
+                                    <label for="carPricePerDay" style="font-size: 1rem;">Car price per day:</label>
+                                    <input type="text" id="carPricePerDay" name="carPricePerDay" class="form-control" readonly="readonly" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-4 mb-sm-0">
+                                    <div class="form-group" style="margin-top: 0.5rem;">
+                                        <label for="startDatePicker" style="font-size: 1rem;">Start Date:</label>
+                                        <input type="date" id="startDatePicker" name="startDate" class="form-control" required
+                                               onchange="updateReservationPrice()">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group" style="margin-top: 0.5rem;">
+                                        <label for="endDatePicker" style="font-size: 1rem;">End Date:</label>
+                                        <input type="date" id="endDatePicker" name="endDate" class="form-control" required
+                                               onchange="updateReservationPrice()">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 0.5rem;" class="form-group">
+                                <label for="reservationPrice" style="font-size: 1rem;">Reservation Price:</label>
+                                <input type="text" id="reservationPrice" name="reservationPrice" class="form-control"
+                                       readonly="readonly" required>
+                            </div>
+
+                            <button style="margin-top: 1.5rem;" type="submit" class="btn btn-primary" id="reserve">Reserve</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="dateErrorModal" tabindex="-1" aria-labelledby="dateErrorModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="dateErrorModalLabel">Date Error</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="dateErrorMessage">Start date cannot be later than the end date.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const carModelInput = document.getElementById("carModel");
+            const hiddenCarModelInput = document.getElementById("hiddenCarModel");
+            hiddenCarModelInput.value = carModelInput.value;
+        </script>
     </body>
 </html>

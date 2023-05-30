@@ -3,7 +3,7 @@ package com.rentaride.carrental.service;
 import com.rentaride.carrental.model.appuser.AppUser;
 import com.rentaride.carrental.model.appuser.AppUserRole;
 import com.rentaride.carrental.registration.EmailValidator;
-import com.rentaride.carrental.registration.RegistrationRequest;
+import com.rentaride.carrental.model.dto.RegistrationRequestDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ public class RegistrationService {
     private final AppUserService appUserService;
     private final EmailValidator emailValidator;
 
-   public String register(RegistrationRequest request) {
+   public String register(RegistrationRequestDto request) {
        boolean isValidEmail = emailValidator.test(request.getEmail());
 
        if (!isValidEmail) {

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarRepository extends CrudRepository<Car, Long> {
+    Car findByMakeAndModel(String carMake, String carModel);
 }

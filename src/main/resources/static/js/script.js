@@ -48,3 +48,58 @@ window.addEventListener('DOMContentLoaded', function() {
         toastInstance.show();
     }
 });
+
+function showReserveModal(button) {
+    const reserveModal = document.getElementById('reserveModal');
+    const modal = new bootstrap.Modal(reserveModal);
+
+    const carName = button.getAttribute('data-car-name');
+    const carModelInput = reserveModal.querySelector('#carModel');
+    carModelInput.value = carName;
+
+    const carPricePerDay = button.getAttribute('data-car-price');
+    const carPricePerDayInput = reserveModal.querySelector('#carPricePerDay');
+    carPricePerDayInput.value = carPricePerDay;
+
+    resetReservationForm();
+    modal.show();
+}
+
+function validateDates() {
+    const startDatePicker = document.getElementById('startDatePicker');
+    const endDatePicker = document.getElementById('endDatePicker');
+
+    const startDate = new Date(startDatePicker.value);
+    const endDate = new Date(endDatePicker.value);
+
+    if (startDate > endDate) {
+        const dateErrorModal = new bootstrap.Modal(document.getElementById('dateErrorModal'));
+        dateErrorModal.show();
+        return false;
+    }
+    return true;
+}
+
+function updateReservationPrice() {
+    const carPricePerDay = parseFloat(document.getElementById('carPricePerDay').value);
+    const startDate = document.getElementById('startDatePicker').value;
+    const endDate = document.getElementById('endDatePicker').value;
+
+    if (startDate && endDate) {
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        if (start < end) {
+            const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+            const reservationPrice = carPricePerDay * days;
+            document.getElementById('reservationPrice').value = reservationPrice.toFixed(2);
+        } else {
+            document.getElementById('reservationPrice').value = 0;
+        }
+    }
+}
+
+function resetReservationForm() {
+    document.getElementById("startDatePicker").value = "";
+    document.getElementById("endDatePicker").value = "";
+    document.getElementById("reservationPrice").value = "";
+}

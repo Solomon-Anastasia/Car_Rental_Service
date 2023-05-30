@@ -85,6 +85,15 @@
                                     <input style="font-size: 1.1rem;" class="btn btn-primary btn-customer btn-block mt-4" value="Login" type="submit">
                                 </form>
                                 <hr>
+
+                                <div class="text-center">
+                                    <a class="small btn btn-lg px-4 me-sm-3" style="background-color: #f2f2f2; border-radius: 10rem; font-size: 1.1rem;"
+                                       th:href="@{/register}"
+                                       onmouseover="this.classList.remove('btn-secondary'); this.classList.add(this.style.backgroundColor='#0d6efc'); this.classList.add('text-white');"
+                                       onmouseout="this.classList.remove('btn-primary'); this.classList.remove('text-white'); this.style.backgroundColor='#f2f2f2';">
+                                        Don't have an account? Register!
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
