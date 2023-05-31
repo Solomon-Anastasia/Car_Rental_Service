@@ -41,4 +41,12 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Maintenance> maintenances;
+
+    public Employee(String firstName, String lastName, EmployeePosition position, String address, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.position = position;
+        this.address = address;
+        this.email = email;
+    }
 }

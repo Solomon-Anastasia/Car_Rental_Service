@@ -2,21 +2,26 @@ package com.rentaride.carrental.service;
 
 import com.rentaride.carrental.model.car.Car;
 import com.rentaride.carrental.model.car.CarStatus;
+import com.rentaride.carrental.model.rental.Rental;
 import com.rentaride.carrental.repository.CarRepository;
 
+import com.rentaride.carrental.repository.RentalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class CarService {
     private final CarRepository carRepository;
+    private final RentalRepository rentalRepository;
 
     @Autowired
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, RentalRepository rentalRepository) {
         this.carRepository = carRepository;
+        this.rentalRepository = rentalRepository;
     }
 
     public List<Car> getAllCars() {
@@ -25,6 +30,15 @@ public class CarService {
 
     public List<Car> getAllAvailableCars() {
         List<Car> availableCars = getAllCars();
+        List<Rental> rentals = (List<Rental>) rentalRepository.findAll();
+
+        rentals.forEach(rental -> {
+            Car car = rental.getCar();
+            car.setStatus(
+                    rental.getRentalEndDate().isAfter(LocalDate.now()) ?
+                            CarStatus.RENTED : CarStatus.AVAILABLE);
+            carRepository.save(car);
+        });
 
         return availableCars.stream()
                 .filter(car -> car.getStatus() == CarStatus.AVAILABLE)

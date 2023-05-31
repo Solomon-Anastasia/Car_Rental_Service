@@ -34,11 +34,9 @@ public class ReservationController {
     @PersistenceContext
     private EntityManager entityManager;
 
-
-    //    TODO: Create or a page or something to be able to se the reservation
     @Transactional
     @PostMapping("/reservation")
-    public String showReservationPage(RentRequestDto rentRequest, Authentication authentication) {
+    public String reserveARent(RentRequestDto rentRequest, Authentication authentication) {
         if (authentication != null && authentication.getPrincipal() instanceof AppUser) {
             Car car = carService.findCarByCarMakeAndCarModel(rentRequest.getCarModel());
             car.setStatus(CarStatus.RENTED);
@@ -60,7 +58,7 @@ public class ReservationController {
                             LocalDate.parse( rentRequest.getEndDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))
                     )
             );
-            return "redirect:about";
+            return "redirect:rentedCars";
         }
 
         return "redirect:login";

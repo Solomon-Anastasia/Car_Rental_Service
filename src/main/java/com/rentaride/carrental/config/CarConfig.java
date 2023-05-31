@@ -20,7 +20,7 @@ public class CarConfig {
     public CommandLineRunner commandLineRunner(CarService carService) {
         return args -> {
             if (carService.countCars() == 0) {
-                CSVReader csvReader = new CSVReader(new FileReader("src/main/resources/static/db/cars.csv"));
+                CSVReader csvReader = new CSVReader(new FileReader("src/main/resources/static/csv/cars.csv"));
                 List<String[]> csvData = csvReader.readAll();
                 csvReader.close();
 

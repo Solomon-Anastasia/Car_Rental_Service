@@ -2,6 +2,7 @@ package com.rentaride.carrental.controller;
 
 import com.rentaride.carrental.cookie.CookieService;
 
+import com.rentaride.carrental.service.RentalService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @AllArgsConstructor
 public class LoginController {
     private final AuthenticationManager authenticationManager;
+    private final RentalService rentalService;
 
     @GetMapping("/login")
     public String showLoginPage() {
