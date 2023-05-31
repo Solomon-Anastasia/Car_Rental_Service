@@ -2,8 +2,8 @@ package com.rentaride.carrental.model.customer;
 
 import com.rentaride.carrental.model.appuser.AppUser;
 import com.rentaride.carrental.model.rental.Rental;
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,10 +24,13 @@ public class Customer {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "app_user_id", nullable = false)
     private AppUser appUser;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Rental> rentals;
-}
 
+    public Customer(AppUser appUser) {
+        this.appUser = appUser;
+    }
+}

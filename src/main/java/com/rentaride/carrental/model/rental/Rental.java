@@ -3,17 +3,7 @@ package com.rentaride.carrental.model.rental;
 import com.rentaride.carrental.model.car.Car;
 
 import com.rentaride.carrental.model.customer.Customer;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.*;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -53,9 +43,9 @@ public class Rental {
     private double totalCost;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private RentalStatus rentalStatus;
 
-    //     TODO: TO DELETE
     public Rental(Car car, Customer customer, LocalDate rentalStartDate, LocalDate rentalEndDate) {
         this.car = car;
         this.customer = customer;
@@ -67,7 +57,7 @@ public class Rental {
 
     private RentalStatus calculateRentalStatus() {
         return (getRentalEndDate().isAfter(LocalDate.now())) ?
-                RentalStatus.RETURNED : RentalStatus.ACTIVE;
+                RentalStatus.ACTIVE : RentalStatus.RETURNED;
     }
 
     public double calculateTotalCost() {

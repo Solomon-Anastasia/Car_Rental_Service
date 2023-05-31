@@ -71,8 +71,9 @@ function validateDates() {
 
     const startDate = new Date(startDatePicker.value);
     const endDate = new Date(endDatePicker.value);
+    const currentDate = new Date();
 
-    if (startDate > endDate) {
+    if (startDate >= endDate || startDate < currentDate) {
         const dateErrorModal = new bootstrap.Modal(document.getElementById('dateErrorModal'));
         dateErrorModal.show();
         return false;

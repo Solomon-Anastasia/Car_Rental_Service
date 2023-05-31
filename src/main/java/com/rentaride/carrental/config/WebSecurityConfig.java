@@ -1,6 +1,7 @@
 package com.rentaride.carrental.config;
 
 import com.rentaride.carrental.service.AppUserService;
+
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

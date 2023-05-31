@@ -3,6 +3,7 @@ package com.rentaride.carrental.service;
 import com.rentaride.carrental.model.car.Car;
 import com.rentaride.carrental.model.car.CarStatus;
 import com.rentaride.carrental.repository.CarRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +38,9 @@ public class CarService {
 
     public void saveCar(Car car) {
         carRepository.save(car);
+    }
+
+    public long countCars() {
+        return carRepository.count();
     }
 }

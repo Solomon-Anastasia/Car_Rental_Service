@@ -1,5 +1,7 @@
 package com.rentaride.carrental.model.appuser;
 
+import com.rentaride.carrental.model.customer.Customer;
+
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,28 +21,33 @@ import java.util.Collections;
 @NoArgsConstructor
 @Entity
 public class AppUser implements UserDetails {
-    @SequenceGenerator(
-            name = "app_user_sequence",
-            sequenceName = "app_user_sequence",
-            allocationSize = 1
-    )
+    @SequenceGenerator(name = "app_user_sequence", sequenceName = "app_user_sequence", allocationSize = 1)
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "app_user_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "app_user_sequence")
     private Long id;
 
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
     private String address;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked = false;
     private Boolean enabled = true;
+
+    @OneToMany(mappedBy = "appUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Customer> customers;
 
     public AppUser(String firstName, String lastName, String address, String email, String password, AppUserRole appUserRole) {
         this.firstName = firstName;

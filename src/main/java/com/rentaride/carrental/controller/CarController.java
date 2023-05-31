@@ -4,8 +4,8 @@ import com.rentaride.carrental.model.appuser.AppUser;
 import com.rentaride.carrental.model.car.Car;
 import com.rentaride.carrental.model.dto.RegistrationRequestDto;
 import com.rentaride.carrental.service.CarService;
+
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,11 +21,10 @@ public class CarController {
     }
 
     @GetMapping("/rent")
-    public String showRentCarPage(Model model) {
+    public String showRentCarPage(Model model, Authentication authentication) {
         List<Car> cars = carService.getAllAvailableCars();
         model.addAttribute("cars", cars);
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof AppUser appUser) {
             model.addAttribute("currentUser", appUser);
         } else {

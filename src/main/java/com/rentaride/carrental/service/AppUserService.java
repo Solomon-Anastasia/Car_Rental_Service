@@ -2,19 +2,15 @@ package com.rentaride.carrental.service;
 
 import com.rentaride.carrental.model.appuser.AppUser;
 import com.rentaride.carrental.repository.AppUserRepository;
+
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.Role;
-import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -48,10 +44,7 @@ public class AppUserService implements UserDetailsService {
         return "login";
     }
 
-//    TODO: Check if i will use this method
-    private Collection<? extends GrantedAuthority> getAuthorities(Set<Role> roles) {
-        return roles.stream()
-                .map(role -> new SimpleGrantedAuthority(role.getRoleName()))
-                .collect(Collectors.toList());
+    public Optional<AppUser> findByEmail(String email) {
+        return appUserRepository.findByEmail(email);
     }
 }

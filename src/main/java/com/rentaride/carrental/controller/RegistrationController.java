@@ -3,6 +3,7 @@ package com.rentaride.carrental.controller;
 import com.rentaride.carrental.cookie.CookieService;
 import com.rentaride.carrental.model.dto.RegistrationRequestDto;
 import com.rentaride.carrental.service.RegistrationService;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;

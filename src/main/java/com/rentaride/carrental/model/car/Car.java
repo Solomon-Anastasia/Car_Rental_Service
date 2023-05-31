@@ -43,6 +43,7 @@ public class Car {
     private int rentalPricePerDay;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private CarStatus status;
 
     @OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

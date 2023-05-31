@@ -1,48 +1,68 @@
 package com.rentaride.carrental.controller;
 
 import com.rentaride.carrental.model.appuser.AppUser;
+import com.rentaride.carrental.model.car.Car;
+import com.rentaride.carrental.model.car.CarStatus;
+import com.rentaride.carrental.model.customer.Customer;
 import com.rentaride.carrental.model.dto.RentRequestDto;
+import com.rentaride.carrental.model.rental.Rental;
+import com.rentaride.carrental.service.AppUserService;
 import com.rentaride.carrental.service.CarService;
+import com.rentaride.carrental.service.CustomerService;
+import com.rentaride.carrental.service.RentalService;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Controller
 public class ReservationController {
     private final CarService carService;
+    private final CustomerService customerService;
+    private final AppUserService appUserService;
+    private final RentalService rentalService;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
+
+    //    TODO: Create or a page or something to be able to se the reservation
+    @Transactional
     @PostMapping("/reservation")
-    public String showReservationPage(RentRequestDto rentRequest) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
+    public String showReservationPage(RentRequestDto rentRequest, Authentication authentication) {
         if (authentication != null && authentication.getPrincipal() instanceof AppUser) {
-            System.out.println(rentRequest.getFirstName());
-            System.out.println(rentRequest.getLastName());
-            System.out.println(rentRequest.getEmail());
-            System.out.println(rentRequest.getAddress());
-            System.out.println(rentRequest.getCarPricePerDay());
-            System.out.println(rentRequest.getStartDate());
-            System.out.println(rentRequest.getEndDate());
+            Car car = carService.findCarByCarMakeAndCarModel(rentRequest.getCarModel());
+            car.setStatus(CarStatus.RENTED);
+            carService.saveCar(car);
 
+            Optional<AppUser> optionalAppUser = appUserService
+                    .findByEmail(((AppUser) authentication.getPrincipal()).getEmail());
+            AppUser appUser = optionalAppUser.get();
+            AppUser mergedAppUser = entityManager.merge(appUser);
 
+            Customer customer = new Customer(mergedAppUser);
+            customerService.saveCustomer(customer);
+
+            rentalService.saveRental(
+                    new Rental(
+                            car,
+                            customer,
+                            LocalDate.parse(rentRequest.getStartDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                            LocalDate.parse( rentRequest.getEndDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                    )
+            );
             return "redirect:about";
         }
 
         return "redirect:login";
-    }
-
-//    TODO: Create or a page or something to be able to se the reservation, also, insert into the database values
-    @PostMapping("/successfulReservation")
-    public String successfulReservation() {
-        /*Car car = carService.findCarByCarMakeAndCarModel(carModel);
-        if (car != null) {
-            car.setStatus(CarStatus.RENTED);
-            carService.saveCar(car);
-        }*/
-
-        return "redirect:about";
     }
 }

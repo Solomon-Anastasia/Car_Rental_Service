@@ -1,6 +1,7 @@
 package com.rentaride.carrental.model.employee;
 
 import com.rentaride.carrental.model.maintenance.Maintenance;
+
 import jakarta.persistence.*;
 
 import lombok.AccessLevel;
@@ -29,7 +30,7 @@ public class Employee {
     private String lastName;
 
     @Column(nullable = false)
-    /*@Enumerated(EnumType.STRING)*/
+    @Enumerated(EnumType.STRING)
     private EmployeePosition position;
 
     @Column(nullable = false)
@@ -37,8 +38,6 @@ public class Employee {
 
     @Column(unique = true)
     private String email;
-
-    private String phoneNumber;
 
     @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Maintenance> maintenances;
