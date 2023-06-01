@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RentalService {
@@ -26,5 +27,9 @@ public class RentalService {
     @Transactional
     public List<Rental> getRentalsByUserId(Long userId) {
         return rentalRepository.findRentalsByUserId(userId);
+    }
+
+    public Optional<Rental> getRentalByCarLicencePlate(String carPlate) {
+        return rentalRepository.findByCarLicencePlate(carPlate);
     }
 }

@@ -3,6 +3,7 @@ package com.rentaride.carrental.service;
 import com.rentaride.carrental.model.car.Car;
 import com.rentaride.carrental.model.car.CarStatus;
 import com.rentaride.carrental.model.rental.Rental;
+import com.rentaride.carrental.model.rental.RentalStatus;
 import com.rentaride.carrental.repository.CarRepository;
 
 import com.rentaride.carrental.repository.RentalRepository;
@@ -28,16 +29,19 @@ public class CarService {
         return (List<Car>) carRepository.findAll();
     }
 
+//    TODO: Add verification for maintenance
     public List<Car> getAllAvailableCars() {
         List<Car> availableCars = getAllCars();
         List<Rental> rentals = (List<Rental>) rentalRepository.findAll();
 
         rentals.forEach(rental -> {
-            Car car = rental.getCar();
-            car.setStatus(
-                    rental.getRentalEndDate().isAfter(LocalDate.now()) ?
-                            CarStatus.RENTED : CarStatus.AVAILABLE);
-            carRepository.save(car);
+            if (rental.getRentalStatus() == RentalStatus.ACTIVE) {
+                Car car = rental.getCar();
+                car.setStatus(
+                        rental.getRentalEndDate().isAfter(LocalDate.now()) ?
+                                CarStatus.RENTED : CarStatus.AVAILABLE);
+                carRepository.save(car);
+            }
         });
 
         return availableCars.stream()
