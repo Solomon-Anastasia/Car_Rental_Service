@@ -5,12 +5,15 @@ import com.rentaride.carrental.model.employee.EmployeePosition;
 import com.rentaride.carrental.service.EmployeeService;
 
 import com.opencsv.CSVReader;
+
 import lombok.SneakyThrows;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.FileReader;
+
 import java.util.List;
 
 @Configuration

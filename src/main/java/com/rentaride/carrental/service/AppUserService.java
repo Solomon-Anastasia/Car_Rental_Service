@@ -4,6 +4,7 @@ import com.rentaride.carrental.model.appuser.AppUser;
 import com.rentaride.carrental.repository.AppUserRepository;
 
 import lombok.AllArgsConstructor;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

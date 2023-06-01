@@ -5,8 +5,8 @@ import com.rentaride.carrental.model.car.CarStatus;
 import com.rentaride.carrental.model.rental.Rental;
 import com.rentaride.carrental.model.rental.RentalStatus;
 import com.rentaride.carrental.repository.CarRepository;
-
 import com.rentaride.carrental.repository.RentalRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

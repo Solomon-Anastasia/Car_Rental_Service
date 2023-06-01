@@ -13,7 +13,9 @@ import com.rentaride.carrental.service.RentalService;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+
 import lombok.AllArgsConstructor;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import java.util.Optional;
 
 @AllArgsConstructor

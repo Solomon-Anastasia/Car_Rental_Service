@@ -1,16 +1,19 @@
 package com.rentaride.carrental.config;
 
 import com.opencsv.CSVReader;
+
 import com.rentaride.carrental.model.car.Car;
 import com.rentaride.carrental.model.car.CarStatus;
 import com.rentaride.carrental.service.CarService;
 
 import lombok.SneakyThrows;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.FileReader;
+
 import java.util.List;
 
 @Configuration

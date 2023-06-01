@@ -6,6 +6,7 @@ import com.rentaride.carrental.registration.EmailValidator;
 import com.rentaride.carrental.model.dto.RegistrationRequestDto;
 
 import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 @Service
