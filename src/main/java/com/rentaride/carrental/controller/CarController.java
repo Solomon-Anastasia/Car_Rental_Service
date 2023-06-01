@@ -10,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class CarController {
@@ -24,6 +27,15 @@ public class CarController {
     public String showRentCarPage(Model model, Authentication authentication) {
         List<Car> cars = carService.getAllAvailableCars();
         model.addAttribute("cars", cars);
+
+        if (cars.isEmpty()) {
+            Map<String, Object> nextCarData = carService.getNextAvailableCar();
+            Car nextCar = (Car) nextCarData.get("car");
+            LocalDate rentalEndDate = (LocalDate) nextCarData.get("rentalEndDate");
+
+            model.addAttribute("nextAvailableCar", nextCar);
+            model.addAttribute("remainingDays", LocalDate.now().until(rentalEndDate, ChronoUnit.DAYS));
+        }
 
         if (authentication != null && authentication.getPrincipal() instanceof AppUser appUser) {
             model.addAttribute("currentUser", appUser);

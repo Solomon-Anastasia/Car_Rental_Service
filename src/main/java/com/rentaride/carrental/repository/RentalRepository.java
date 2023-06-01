@@ -17,4 +17,7 @@ public interface RentalRepository extends CrudRepository<Rental, Long> {
 
     @Query("SELECT r FROM Rental r WHERE r.car.licencePlate = :carPlate AND r.rentalStatus = 'ACTIVE'")
     Optional<Rental> findByCarLicencePlate(String carPlate);
+
+    @Query("SELECT r FROM Rental r WHERE r.rentalStatus = 'ACTIVE'")
+    List<Rental> findAllActive();
 }

@@ -25,15 +25,13 @@ public class WebSecurityConfig {
     private final AppUserService appUserService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-//     TODO: Configure each web page with corresponding user role
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/**").permitAll()
-                        .anyRequest().authenticated()
-
+                        .anyRequest().permitAll()
                 )
                 .httpBasic(withDefaults())
                 .build();

@@ -11,7 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,7 +33,6 @@ public class CarService {
         return (List<Car>) carRepository.findAll();
     }
 
-//    TODO: Add verification for maintenance
     public List<Car> getAllAvailableCars() {
         List<Car> availableCars = getAllCars();
         List<Rental> rentals = (List<Rental>) rentalRepository.findAll();
@@ -61,4 +64,18 @@ public class CarService {
     public long countCars() {
         return carRepository.count();
     }
+
+   public Map<String, Object> getNextAvailableCar() {
+       List<Rental> rentals = rentalRepository.findAllActive();
+       rentals.sort(Comparator.comparing(Rental::getRentalEndDate));
+
+       Optional<Rental> nextRental = rentals.stream()
+               .filter(rental -> rental.getRentalEndDate().isAfter(LocalDate.now()))
+               .findFirst();
+
+       Map<String, Object> result = new HashMap<>();
+       result.put("car", nextRental.map(Rental::getCar).orElse(null));
+       result.put("rentalEndDate", nextRental.map(Rental::getRentalEndDate).orElse(null));
+       return result;
+   }
 }
