@@ -1,6 +1,5 @@
 package com.rentaride.carrental.model.car;
 
-import com.rentaride.carrental.model.maintenance.Maintenance;
 import com.rentaride.carrental.model.rental.Rental;
 
 import jakarta.persistence.CascadeType;
@@ -59,9 +58,6 @@ public class Car {
 
     @OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Rental> rentals;
-
-    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Maintenance> maintenances;
 
     public Car(String make, String model, int year, String color, String licencePlate, int rentalPricePerDay, CarStatus status) {
         this.make = make;
