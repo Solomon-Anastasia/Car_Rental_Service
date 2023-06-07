@@ -63,11 +63,10 @@ public class RegistrationController {
 
             LocalDateTime expiredAt = tokenConfirmed.getExpiresAt();
             if (expiredAt.isBefore(LocalDateTime.now())) {
-                throw new IllegalStateException("Token expired");
+                return "redirect:/tokenExpired";
             }
 
             registrationService.confirmToken(token);
-            confirmationTokenService.setConfirmedAt(token);
         }
 
         return "redirect:/emailSender";
@@ -76,5 +75,10 @@ public class RegistrationController {
     @GetMapping("/emailSender")
     public String sent() {
         return "redirect:/emailConfirmed";
+    }
+
+    @GetMapping("/tokenExpired")
+    public String showExpiredTokenPage() {
+        return "tokenExpired";
     }
 }
