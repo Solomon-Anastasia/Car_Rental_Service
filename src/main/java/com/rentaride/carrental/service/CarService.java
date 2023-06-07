@@ -78,4 +78,10 @@ public class CarService {
        result.put("rentalEndDate", nextRental.map(Rental::getRentalEndDate).orElse(null));
        return result;
    }
+
+    public List<Rental> getRemainingActiveRentals () {
+        List<Rental> rentals = rentalRepository.findAllActive();
+        rentals.sort(Comparator.comparing(Rental::getRentalEndDate));
+        return rentals;
+    }
 }

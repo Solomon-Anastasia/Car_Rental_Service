@@ -3,6 +3,7 @@ package com.rentaride.carrental.controller;
 import com.rentaride.carrental.model.appuser.AppUser;
 import com.rentaride.carrental.model.car.Car;
 import com.rentaride.carrental.model.dto.RegistrationRequestDto;
+import com.rentaride.carrental.model.dto.RentalDto;
 import com.rentaride.carrental.service.CarService;
 
 import org.springframework.security.core.Authentication;
@@ -15,6 +16,7 @@ import java.time.temporal.ChronoUnit;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class CarController {
@@ -31,11 +33,20 @@ public class CarController {
 
         if (cars.isEmpty()) {
             Map<String, Object> nextCarData = carService.getNextAvailableCar();
+
             Car nextCar = (Car) nextCarData.get("car");
             LocalDate rentalEndDate = (LocalDate) nextCarData.get("rentalEndDate");
+            List<RentalDto> remainingAvailableRents = carService
+                    .getRemainingActiveRentals()
+                    .stream()
+                    .map(rental ->
+                            new RentalDto(rental.getCar(), (int) LocalDate.now().until(rental.getRentalEndDate(), ChronoUnit.DAYS)
+                    ))
+                    .collect(Collectors.toList());
 
             model.addAttribute("nextAvailableCar", nextCar);
             model.addAttribute("remainingDays", LocalDate.now().until(rentalEndDate, ChronoUnit.DAYS));
+            model.addAttribute("remainingAvailableRentals", remainingAvailableRents);
         }
 
         if (authentication != null && authentication.getPrincipal() instanceof AppUser appUser) {
