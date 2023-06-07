@@ -41,11 +41,15 @@ public class RegistrationService {
                )
        );
 
-       String link = "http://localhost:8080/confirm?token=" + token;
-       emailSender.send(
-               request.getEmail(),
-               buildEmail(request.getFirstName(), link)
-       );
+       if (!token.equals("emailTaken")) {
+           String link = "http://localhost:8080/confirm?token=" + token;
+
+           emailSender.send(
+                   request.getEmail(),
+                   buildEmail(request.getFirstName(), link)
+           );
+       }
+
        return token;
    }
 
