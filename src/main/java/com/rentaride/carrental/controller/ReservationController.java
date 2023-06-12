@@ -9,6 +9,7 @@ import com.rentaride.carrental.model.rental.Rental;
 import com.rentaride.carrental.service.AppUserService;
 import com.rentaride.carrental.service.CarService;
 import com.rentaride.carrental.service.CustomerService;
+import com.rentaride.carrental.service.RentalConfirmationService;
 import com.rentaride.carrental.service.RentalService;
 
 import jakarta.persistence.EntityManager;
@@ -33,6 +34,7 @@ public class ReservationController {
     private final CustomerService customerService;
     private final AppUserService appUserService;
     private final RentalService rentalService;
+    private final RentalConfirmationService rentalConfirmationService;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -53,12 +55,24 @@ public class ReservationController {
             Customer customer = new Customer(mergedAppUser);
             customerService.saveCustomer(customer);
 
-            rentalService.saveRental(
-                    new Rental(
-                            car,
-                            customer,
-                            LocalDate.parse(rentRequest.getStartDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                            LocalDate.parse( rentRequest.getEndDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+            Rental rental = new Rental(
+                    car,
+                    customer,
+                    LocalDate.parse(rentRequest.getStartDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                    LocalDate.parse( rentRequest.getEndDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+            );
+
+            rentalService.saveRental(rental);
+
+            rentalConfirmationService.send(
+                    appUser.getEmail(),
+                    rentalService.sendRentalConfirmationEmail(
+                            appUser.getFirstName(),
+                            car.getMake(),
+                            car.getModel(),
+                            rental.getTotalCost(),
+                            rental.getRentalStartDate().toString(),
+                            rental.getRentalEndDate().toString()
                     )
             );
             return "redirect:rentedCars";

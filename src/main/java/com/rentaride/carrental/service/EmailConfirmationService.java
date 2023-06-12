@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class EmailService implements EmailSender {
-    private final static Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
+public class EmailConfirmationService implements EmailSender {
+    private final static Logger LOGGER = LoggerFactory.getLogger(EmailConfirmationService.class);
     private final JavaMailSender mailSender;
 
     @Override

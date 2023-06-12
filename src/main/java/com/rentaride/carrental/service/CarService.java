@@ -47,6 +47,12 @@ public class CarService {
             }
         });
 
+        rentals.forEach(rental -> {
+            if (rental.getRentalStatus() == RentalStatus.ACTIVE && !rental.getRentalEndDate().isAfter(LocalDate.now())) {
+                rental.setRentalStatus(RentalStatus.RETURNED);
+                rentalRepository.save(rental);
+            }
+        });
         return availableCars.stream()
                 .filter(car -> car.getStatus() == CarStatus.AVAILABLE)
                 .collect(Collectors.toList());
