@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class RentalConfirmationService  implements EmailSender {
+public class RentalConfirmationService implements EmailSender {
     private final static Logger LOGGER = LoggerFactory.getLogger(EmailConfirmationService.class);
     private final JavaMailSender mailSender;
 

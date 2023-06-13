@@ -59,7 +59,7 @@ public class ReservationController {
                     car,
                     customer,
                     LocalDate.parse(rentRequest.getStartDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                    LocalDate.parse( rentRequest.getEndDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                    LocalDate.parse(rentRequest.getEndDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))
             );
 
             rentalService.saveRental(rental);

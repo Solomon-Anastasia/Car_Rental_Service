@@ -32,34 +32,34 @@ public class RegistrationService {
     }
 
     public String register(RegistrationRequestDto request) {
-       boolean isValidEmail = emailValidator.test(request.getEmail());
+        boolean isValidEmail = emailValidator.test(request.getEmail());
 
-       if (!isValidEmail) {
-           throw new IllegalStateException("email not valid");
-       }
+        if (!isValidEmail) {
+            throw new IllegalStateException("email not valid");
+        }
 
-       String token = appUserService.signUpUser(
-               new AppUser(
-                       request.getFirstName(),
-                       request.getLastName(),
-                       request.getAddress(),
-                       request.getEmail(),
-                       request.getPassword(),
-                       AppUserRole.USER
-               )
-       );
+        String token = appUserService.signUpUser(
+                new AppUser(
+                        request.getFirstName(),
+                        request.getLastName(),
+                        request.getAddress(),
+                        request.getEmail(),
+                        request.getPassword(),
+                        AppUserRole.USER
+                )
+        );
 
-       if (!token.equals("emailTaken")) {
-           String link = "http://localhost:8080/confirm?token=" + token;
+        if (!token.equals("emailTaken")) {
+            String link = "http://localhost:8080/confirm?token=" + token;
 
-           emailSender.send(
-                   request.getEmail(),
-                   buildEmail(request.getFirstName(), link)
-           );
-       }
+            emailSender.send(
+                    request.getEmail(),
+                    buildEmail(request.getFirstName(), link)
+            );
+        }
 
-       return token;
-   }
+        return token;
+    }
 
     @Transactional
     public void confirmToken(String token) {

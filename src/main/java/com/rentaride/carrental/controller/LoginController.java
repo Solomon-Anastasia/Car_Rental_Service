@@ -35,19 +35,19 @@ public class LoginController {
                         HttpServletResponse response,
                         HttpServletRequest request) {
         try {
-             Authentication authentication = authenticationManager.authenticate(
-                             new UsernamePasswordAuthenticationToken(email, password));
-             SecurityContextHolder.getContext().setAuthentication(authentication);
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(email, password));
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-             request.getSession().setAttribute(
-                     HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
-                     SecurityContextHolder.getContext()
-             );
+            request.getSession().setAttribute(
+                    HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
+                    SecurityContextHolder.getContext()
+            );
 
-             return "redirect:/home";
+            return "redirect:/home";
         } catch (AuthenticationException e) {
-             CookieService.setToastCookie(response, "showToast", true);
-             return "redirect:/failedLogin";
+            CookieService.setToastCookie(response, "showToast", true);
+            return "redirect:/failedLogin";
         }
     }
 

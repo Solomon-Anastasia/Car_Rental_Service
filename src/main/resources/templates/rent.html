@@ -1,266 +1,289 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Rent a Ride - Car fleet</title>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Rent a Ride - Car fleet</title>
 
-        <link rel="icon" type="image/x-icon" th:href="@{/images/rentARide.png.ico}" />
-        <link rel="icon" type="image/png" th:href="@{/images/rentARide.png}" />
-        <link rel="icon" type="image/svg+xml" th:href="@{/images/rentARide.png.svg}" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="icon" type="image/x-icon" th:href="@{/images/rentARide.png.ico}"/>
+    <link rel="icon" type="image/png" th:href="@{/images/rentARide.png}"/>
+    <link rel="icon" type="image/svg+xml" th:href="@{/images/rentARide.png.svg}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script th:src="@{/js/script.js}"></script>
-    </head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/script.js}"></script>
+</head>
 
-    <style>
-        .modal-sm {
-            max-width: 400px;
-        }
-    </style>
+<style>
+    .modal-sm {
+        max-width: 400px;
+    }
+</style>
 
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-5">
-                <a class="navbar-brand" th:href="@{/home}">Rent A Ride</a>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <a class="navbar-brand" th:href="@{/home}">Rent A Ride</a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" th:href="@{/home}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" th:href="@{/about}">About</a></li>
-                        <li class="nav-item"><a class="nav-link" th:href="@{/rent}">Car Fleet</a></li>
-                        <li class="nav-item"><a class="nav-link" th:href="@{/rentedCars}">Rented Cars</a></li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" th:href="@{/home}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/about}">About</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/rent}">Car Fleet</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/rentedCars}">Rented Cars</a></li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownLogIn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Log In</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                <li><a class="dropdown-item" th:href="@{/register}">Create Account</a></li>
-                                <li><a class="dropdown-item" th:href="@{/login}">Log In</a></li>
-                            </ul>
-                        </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownLogIn" href="#" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">Log In</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item" th:href="@{/register}">Create Account</a></li>
+                        <li><a class="dropdown-item" th:href="@{/login}">Log In</a></li>
                     </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-5 fw-bolder text-white mb-2">Car fleet</h1>
+            <p class="lead fw-normal text-white-50 mb-4">Embark on a seamless car rental experience tailored to your
+                unique needs and preferences. Explore our diverse range of premium vehicles and discover the perfect
+                solution that will elevate your journey to new heights of comfort and style.</p>
+        </div>
+    </div>
+</header>
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" th:each="car : ${cars}">
+                <div class="card h-100">
+                    <img class="card-img-top" th:src="@{/images/carfleet/__${car.make + car.model}__.png}" alt="..."/>
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <h5 class="fw-bolder" th:text="${car.make + ' ' + car.model}"></h5>
+                            <span th:text="${car.rentalPricePerDay} + '€ per day'"></span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a class="btn btn-primary mt-auto" th:if="${currentUser == null}" th:href="@{/login}">Reserve
+                                now ></a>
+                            <a class="btn btn-primary mt-auto" th:if="${currentUser != null}"
+                               onclick="showReserveModal(this)"
+                               th:data-car-name="${car.make + ' ' + car.model}"
+                               th:data-car-price="${car.rentalPricePerDay}">Reserve now ></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </div>
+</section>
 
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-5 fw-bolder text-white mb-2">Car fleet</h1>
-                    <p class="lead fw-normal text-white-50 mb-4">Embark on a seamless car rental experience tailored to your unique needs and preferences. Explore our diverse range of premium vehicles and discover the perfect solution that will elevate your journey to new heights of comfort and style.</p>
-                </div>
+<section class="py-5" th:if="${#lists.isEmpty(cars)}">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="card-text m-0 me-3">No car is available at the moment</h4>
+                <h5 class="text-left" style="margin-top: 1rem;">Next available car will be:</h5>
             </div>
-        </header>
 
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5" th:each="car : ${cars}">
-                        <div class="card h-100">
-                            <img class="card-img-top" th:src="@{/images/carfleet/__${car.make + car.model}__.png}" alt="..." />
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-6 h-100">
                             <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder" th:text="${car.make + ' ' + car.model}"></h5>
-                                    <span th:text="${car.rentalPricePerDay} + '€ per day'"></span>
+                                <div class="text-left" style="margin-top: 1.1rem;">
+                                    <h5 class="fw-bolder"
+                                        th:text="${nextAvailableCar.make + ' ' + nextAvailableCar.model}"></h5>
+                                    <span th:text="${nextAvailableCar.rentalPricePerDay} + '€ per day'"></span>
+                                    <div style="margin-top: 1.1rem;"></div>
+                                    <span th:text="'Available in ' + ${remainingDays} + ' days'"></span>
                                 </div>
                             </div>
-
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                    <a class="btn btn-primary mt-auto" th:if="${currentUser == null}" th:href="@{/login}">Reserve now ></a>
-                                    <a class="btn btn-primary mt-auto" th:if="${currentUser != null}" onclick="showReserveModal(this)"
-                                       th:data-car-name="${car.make + ' ' + car.model}" th:data-car-price="${car.rentalPricePerDay}">Reserve now ></a>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="col-md-6 h-100">
+                            <img class="card-img-top"
+                                 th:src="@{/images/carfleet/__${nextAvailableCar.make + nextAvailableCar.model}__.png}"
+                                 alt="..." style="width: 100%; height: auto;"/>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <div style="margin: 1rem;"></div>
 
-        <section class="py-5" th:if="${#lists.isEmpty(cars)}">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4 class="card-text m-0 me-3">No car is available at the moment</h4>
-                        <h5 class="text-left" style="margin-top: 1rem;">Next available car will be:</h5>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-6 h-100">
-                                    <div class="card-body p-4">
-                                        <div class="text-left" style="margin-top: 1.1rem;">
-                                            <h5 class="fw-bolder" th:text="${nextAvailableCar.make + ' ' + nextAvailableCar.model}"></h5>
-                                            <span th:text="${nextAvailableCar.rentalPricePerDay} + '€ per day'"></span>
-                                            <div style="margin-top: 1.1rem;"></div>
-                                            <span th:text="'Available in ' + ${remainingDays} + ' days'"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 h-100">
-                                    <img class="card-img-top" th:src="@{/images/carfleet/__${nextAvailableCar.make + nextAvailableCar.model}__.png}" alt="..." style="width: 100%; height: auto;" />
+            <h5 class="text-left" style="margin-top: 1rem;">All cars available soon:</h5>
+            <div style="margin: 1rem;"></div>
+            <div class="col-md-6" th:each="remainningRents : ${remainingAvailableRentals}">
+                <div class="card mb-3">
+                    <div class="row g-0" style="height: 210px;">
+                        <div class="col-md-6 h-100">
+                            <div class="card-body p-4">
+                                <div class="text-left" style="margin-top: 1.1rem;">
+                                    <h5 class="fw-bolder"
+                                        th:text="${remainningRents.car.make + ' ' + remainningRents.car.model}"></h5>
+                                    <span th:text="${remainningRents.car.rentalPricePerDay} + '€ per day'"></span>
+                                    <div style="margin-top: 1.1rem;"></div>
+                                    <span th:text="'Available in ' + ${remainningRents.remainingDays} + ' days'"></span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div style="margin: 1rem;"></div>
-
-                    <h5 class="text-left" style="margin-top: 1rem;">All cars available soon:</h5>
-                    <div style="margin: 1rem;"></div>
-                    <div class="col-md-6" th:each="remainningRents : ${remainingAvailableRentals}">
-                        <div class="card mb-3">
-                            <div class="row g-0" style="height: 210px;">
-                                <div class="col-md-6 h-100">
-                                    <div class="card-body p-4">
-                                        <div class="text-left" style="margin-top: 1.1rem;">
-                                            <h5 class="fw-bolder" th:text="${remainningRents.car.make + ' ' + remainningRents.car.model}"></h5>
-                                            <span th:text="${remainningRents.car.rentalPricePerDay} + '€ per day'"></span>
-                                            <div style="margin-top: 1.1rem;"></div>
-                                            <span th:text="'Available in ' + ${remainningRents.remainingDays} + ' days'"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 h-100">
-                                    <img class="card-img-top" th:src="@{/images/carfleet/__${remainningRents.car.make + remainningRents.car.model}__.png}" alt="..." style="width: 100%; height: auto;" />
-                                </div>
-                            </div>
+                        <div class="col-md-6 h-100">
+                            <img class="card-img-top"
+                                 th:src="@{/images/carfleet/__${remainningRents.car.make + remainningRents.car.model}__.png}"
+                                 alt="..." style="width: 100%; height: auto;"/>
                         </div>
                     </div>
-
                 </div>
             </div>
-        </section>
 
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-left text-white">Copyright &copy; Rent a Ride 2023</p></div>
-        </footer>
+        </div>
+    </div>
+</section>
 
-        <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="reserveModalLabel">Reserve Car</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-left text-white">Copyright &copy; Rent a Ride 2023</p></div>
+</footer>
+
+<div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reserveModalLabel">Reserve Car</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="customer fs-4 mb-4"
+                      th:action="@{/reservation}"
+                      th:object="${currentUser}"
+                      method="post"
+                      onsubmit="return validateDates()">
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-4 mb-sm-0">
+                            <label for="exampleFirstName" style="font-size: 1rem;">Name:</label>
+                            <input th:field="*{firstName}" style="font-size: 1rem;" type="text"
+                                   class="form-control form-control-customer" id="exampleFirstName"
+                                   placeholder="First Name" readonly="readonly" th:if="${currentUser != null}"
+                                   th:value="${currentUser.firstName}" required>
+                            <input th:field="${guestUser.firstName}" style="font-size: 1rem;" type="text"
+                                   class="form-control form-control-customer" id="defaultFirstName"
+                                   placeholder="First Name" readonly="readonly" th:if="${currentUser == null}"
+                                   th:value="${guestUser.firstName}" required>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="exampleLastName" style="font-size: 1rem;">Last Name:</label>
+                            <input th:field="*{lastName}" style="font-size: 1rem;" type="text"
+                                   class="form-control form-control-customer" id="exampleLastName"
+                                   placeholder="Last Name" readonly="readonly" th:if="${currentUser != null}"
+                                   th:value="${currentUser.lastName}" required>
+                            <input th:field="${guestUser.lastName}" style="font-size: 1rem;" type="text"
+                                   class="form-control form-control-customer" id="defaultLastName"
+                                   placeholder="Last Name" readonly="readonly" th:if="${currentUser == null}"
+                                   th:value="${guestUser.lastName}" required>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form class="customer fs-4 mb-4"
-                              th:action="@{/reservation}"
-                              th:object="${currentUser}"
-                              method="post"
-                              onsubmit="return validateDates()">
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-4 mb-sm-0">
-                                    <label for="exampleFirstName" style="font-size: 1rem;">Name:</label>
-                                    <input th:field="*{firstName}" style="font-size: 1rem;" type="text"
-                                           class="form-control form-control-customer" id="exampleFirstName"
-                                           placeholder="First Name" readonly="readonly" th:if="${currentUser != null}" th:value="${currentUser.firstName}" required>
-                                    <input th:field="${guestUser.firstName}" style="font-size: 1rem;" type="text"
-                                           class="form-control form-control-customer" id="defaultFirstName"
-                                           placeholder="First Name" readonly="readonly" th:if="${currentUser == null}" th:value="${guestUser.firstName}" required>
-                                </div>
 
-                                <div class="col-sm-6">
-                                    <label for="exampleLastName" style="font-size: 1rem;">Last Name:</label>
-                                    <input th:field="*{lastName}" style="font-size: 1rem;" type="text"
-                                           class="form-control form-control-customer" id="exampleLastName"
-                                           placeholder="Last Name" readonly="readonly" th:if="${currentUser != null}" th:value="${currentUser.lastName}" required>
-                                    <input th:field="${guestUser.lastName}" style="font-size: 1rem;" type="text"
-                                           class="form-control form-control-customer" id="defaultLastName"
-                                           placeholder="Last Name" readonly="readonly" th:if="${currentUser == null}" th:value="${guestUser.lastName}" required>
-                                </div>
-                            </div>
+                    <div class="form-group" style="margin-top: 0.5rem;">
+                        <label for="exampleInputAddress" style="font-size: 1rem;">Address:</label>
+                        <input th:field="*{address}" style="font-size: 1rem;" type="text"
+                               class="form-control form-control-customer" id="exampleInputAddress"
+                               placeholder="Address" readonly="readonly" th:if="${currentUser != null}"
+                               th:value="${currentUser.address}" required>
 
-                            <div class="form-group" style="margin-top: 0.5rem;">
-                                <label for="exampleInputAddress" style="font-size: 1rem;">Address:</label>
-                                <input th:field="*{address}" style="font-size: 1rem;" type="text"
-                                       class="form-control form-control-customer" id="exampleInputAddress"
-                                       placeholder="Address" readonly="readonly" th:if="${currentUser != null}" th:value="${currentUser.address}" required>
-
-                                <input th:field="${guestUser.address}" style="font-size: 1rem;" type="text"
-                                       class="form-control form-control-customer" id="defaultInputAddress"
-                                       placeholder="Address" readonly="readonly" th:if="${currentUser == null}" th:value="${guestUser.address}" required>
-                            </div>
-
-                            <div class="form-group" style="margin-top: 0.5rem;">
-                                <label for="exampleInputEmail" style="font-size: 1rem;">Email:</label>
-                                <input th:field="*{email}" style="font-size: 1rem;" type="email"
-                                       class="form-control form-control-customer" id="exampleInputEmail"
-                                       placeholder="Email Address" readonly="readonly" th:if="${currentUser != null}" th:value="${currentUser.email}" required>
-                                <input th:field="${guestUser.email}" style="font-size: 1rem;" type="email"
-                                       class="form-control form-control-customer" id="defaultInputEmail"
-                                       placeholder="Email Address" readonly="readonly" th:if="${currentUser == null}" th:value="${guestUser.email}" required>
-                            </div>
-
-                            <div class="form-group row">
-                                <div style="margin-top: 0.5rem;" class="form-group">
-                                    <label for="carModel" style="font-size: 1rem;">Car Model:</label>
-                                    <input type="text" id="carModel" name="carModel" class="form-control" readonly="readonly" required>
-                                </div>
-
-                                <div style="margin-top: 0.5rem;" class="form-group">
-                                    <label for="carPricePerDay" style="font-size: 1rem;">Car price per day:</label>
-                                    <input type="text" id="carPricePerDay" name="carPricePerDay" class="form-control" readonly="readonly" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-4 mb-sm-0">
-                                    <div class="form-group" style="margin-top: 0.5rem;">
-                                        <label for="startDatePicker" style="font-size: 1rem;">Start Date:</label>
-                                        <input type="date" id="startDatePicker" name="startDate" class="form-control" required
-                                               onchange="updateReservationPrice()">
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="form-group" style="margin-top: 0.5rem;">
-                                        <label for="endDatePicker" style="font-size: 1rem;">End Date:</label>
-                                        <input type="date" id="endDatePicker" name="endDate" class="form-control" required
-                                               onchange="updateReservationPrice()">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div style="margin-top: 0.5rem;" class="form-group">
-                                <label for="reservationPrice" style="font-size: 1rem;">Reservation Price:</label>
-                                <input type="text" id="reservationPrice" name="reservationPrice" class="form-control"
-                                       readonly="readonly" required>
-                            </div>
-
-                            <button style="margin-top: 1.5rem;" type="submit" class="btn btn-primary" id="reserve">Reserve</button>
-                        </form>
+                        <input th:field="${guestUser.address}" style="font-size: 1rem;" type="text"
+                               class="form-control form-control-customer" id="defaultInputAddress"
+                               placeholder="Address" readonly="readonly" th:if="${currentUser == null}"
+                               th:value="${guestUser.address}" required>
                     </div>
-                </div>
+
+                    <div class="form-group" style="margin-top: 0.5rem;">
+                        <label for="exampleInputEmail" style="font-size: 1rem;">Email:</label>
+                        <input th:field="*{email}" style="font-size: 1rem;" type="email"
+                               class="form-control form-control-customer" id="exampleInputEmail"
+                               placeholder="Email Address" readonly="readonly" th:if="${currentUser != null}"
+                               th:value="${currentUser.email}" required>
+                        <input th:field="${guestUser.email}" style="font-size: 1rem;" type="email"
+                               class="form-control form-control-customer" id="defaultInputEmail"
+                               placeholder="Email Address" readonly="readonly" th:if="${currentUser == null}"
+                               th:value="${guestUser.email}" required>
+                    </div>
+
+                    <div class="form-group row">
+                        <div style="margin-top: 0.5rem;" class="form-group">
+                            <label for="carModel" style="font-size: 1rem;">Car Model:</label>
+                            <input type="text" id="carModel" name="carModel" class="form-control" readonly="readonly"
+                                   required>
+                        </div>
+
+                        <div style="margin-top: 0.5rem;" class="form-group">
+                            <label for="carPricePerDay" style="font-size: 1rem;">Car price per day:</label>
+                            <input type="text" id="carPricePerDay" name="carPricePerDay" class="form-control"
+                                   readonly="readonly" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-4 mb-sm-0">
+                            <div class="form-group" style="margin-top: 0.5rem;">
+                                <label for="startDatePicker" style="font-size: 1rem;">Start Date:</label>
+                                <input type="date" id="startDatePicker" name="startDate" class="form-control" required
+                                       onchange="updateReservationPrice()">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group" style="margin-top: 0.5rem;">
+                                <label for="endDatePicker" style="font-size: 1rem;">End Date:</label>
+                                <input type="date" id="endDatePicker" name="endDate" class="form-control" required
+                                       onchange="updateReservationPrice()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 0.5rem;" class="form-group">
+                        <label for="reservationPrice" style="font-size: 1rem;">Reservation Price:</label>
+                        <input type="text" id="reservationPrice" name="reservationPrice" class="form-control"
+                               readonly="readonly" required>
+                    </div>
+
+                    <button style="margin-top: 1.5rem;" type="submit" class="btn btn-primary" id="reserve">Reserve
+                    </button>
+                </form>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="modal fade" id="dateErrorModal" tabindex="-1" aria-labelledby="dateErrorModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="dateErrorModalLabel">Date Error</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p id="dateErrorMessage">Invalid date input.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
+<div class="modal fade" id="dateErrorModal" tabindex="-1" aria-labelledby="dateErrorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dateErrorModalLabel">Date Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="dateErrorMessage">Invalid date input.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
+    </div>
+</div>
 
-        <script>
-            const carModelInput = document.getElementById("carModel");
-            const hiddenCarModelInput = document.getElementById("hiddenCarModel");
-            hiddenCarModelInput.value = carModelInput.value;
-        </script>
-    </body>
+<script>
+    const carModelInput = document.getElementById("carModel");
+    const hiddenCarModelInput = document.getElementById("hiddenCarModel");
+    hiddenCarModelInput.value = carModelInput.value;
+</script>
+</body>
 </html>

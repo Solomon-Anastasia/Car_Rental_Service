@@ -26,9 +26,9 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String showRegisterPage(Model model) {
-       model.addAttribute("request", new RegistrationRequestDto());
+        model.addAttribute("request", new RegistrationRequestDto());
 
-       return "register";
+        return "register";
     }
 
     @PostMapping("/registerSuccess")

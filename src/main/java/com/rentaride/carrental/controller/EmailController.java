@@ -18,6 +18,6 @@ public class EmailController {
 
     @GetMapping("/emailConfirmed")
     public String showEmailConfirmedPage() {
-        return  "emailConfirmed";
+        return "emailConfirmed";
     }
 }

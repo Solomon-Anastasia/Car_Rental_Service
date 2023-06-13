@@ -71,21 +71,21 @@ public class CarService {
         return carRepository.count();
     }
 
-   public Map<String, Object> getNextAvailableCar() {
-       List<Rental> rentals = rentalRepository.findAllActive();
-       rentals.sort(Comparator.comparing(Rental::getRentalEndDate));
+    public Map<String, Object> getNextAvailableCar() {
+        List<Rental> rentals = rentalRepository.findAllActive();
+        rentals.sort(Comparator.comparing(Rental::getRentalEndDate));
 
-       Optional<Rental> nextRental = rentals.stream()
-               .filter(rental -> rental.getRentalEndDate().isAfter(LocalDate.now()))
-               .findFirst();
+        Optional<Rental> nextRental = rentals.stream()
+                .filter(rental -> rental.getRentalEndDate().isAfter(LocalDate.now()))
+                .findFirst();
 
-       Map<String, Object> result = new HashMap<>();
-       result.put("car", nextRental.map(Rental::getCar).orElse(null));
-       result.put("rentalEndDate", nextRental.map(Rental::getRentalEndDate).orElse(null));
-       return result;
-   }
+        Map<String, Object> result = new HashMap<>();
+        result.put("car", nextRental.map(Rental::getCar).orElse(null));
+        result.put("rentalEndDate", nextRental.map(Rental::getRentalEndDate).orElse(null));
+        return result;
+    }
 
-    public List<Rental> getRemainingActiveRentals () {
+    public List<Rental> getRemainingActiveRentals() {
         List<Rental> rentals = rentalRepository.findAllActive();
         rentals.sort(Comparator.comparing(Rental::getRentalEndDate));
         return rentals;
